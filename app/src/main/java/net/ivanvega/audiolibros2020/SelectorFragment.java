@@ -24,7 +24,6 @@ public class SelectorFragment extends Fragment {
     private RecyclerView recycler;
     private GridLayoutManager layoutManager;
 
-    //comit
 
     MainActivity mainActivity;
 
@@ -32,7 +31,6 @@ public class SelectorFragment extends Fragment {
         // Required empty public constructor
     }
 
-    //Metodo estatico para la creacion de una instancia de un fragmento
     public static SelectorFragment newInstance(String param1, String param2) {
         SelectorFragment fragment = new SelectorFragment();
         Bundle args = new Bundle();
@@ -42,15 +40,12 @@ public class SelectorFragment extends Fragment {
         return fragment;
     }
 
-    //Se utiliza para llamar al fragmetno dentro de la actividad
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mainActivity = (MainActivity) context;
     }
 
-
-    //Creacion del fragmento
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,9 +55,7 @@ public class SelectorFragment extends Fragment {
         }
     }
 
-    //Metodo para crear una interfaz de usuario con base con el fragmento de alguna interfaz
-    //Al igual se diseña el diseño del layoutManager con los libros a crear y tambien se les asigna
-    //el evento de click a los elementos.
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,20 +63,16 @@ public class SelectorFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_selector,
                 container, false);
 
-        //se le asigna las diferentes propiedades a nuestro recyclerView para que este muestre los diferentes formatos
         recycler = (RecyclerView) v.findViewById(R.id.recyclerView);
 
         layoutManager = new GridLayoutManager(getActivity(), 2);
 
         recycler.setLayoutManager(layoutManager);
 
-        //Creamos la instancia del adaptador de libros y le asignamos los libros a crear.
         AdaptadorLibros adaptadorLibros =
                 new AdaptadorLibros(getActivity(), Libro.ejemploLibros());
 
-        //Le asignamos el evento de click a los libros el cual cuando se le de click
-    //a algun libro este mostrara su posicion con un toast y despues se lanzara  el mostrarDetalle
-        //el cual nos mostrara el libro seleccionado
+
             adaptadorLibros.setOnclickListener(
                     vl -> {
                         Toast.makeText(getActivity(),
@@ -96,8 +85,7 @@ public class SelectorFragment extends Fragment {
                     }
             );
 
-            //Asignacion del click largo, el cual consiste si este se lanza, se crea un alertDialog, con el cual
-        //se muestra una ventana con diferentes opciones.
+
             adaptadorLibros.setOnLongClickListener(view -> {
                 AlertDialog.Builder cuadroDialogo = new AlertDialog.Builder(getContext());
 

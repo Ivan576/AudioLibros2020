@@ -42,7 +42,6 @@ public class DetalleFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
 
-    //Creacion de la nueva instancia de nuestro detalleFragment
     public static DetalleFragment newInstance(String param1, String param2) {
         DetalleFragment fragment = new DetalleFragment();
         Bundle args = new Bundle();
@@ -53,7 +52,6 @@ public class DetalleFragment extends Fragment {
     }
 
 
-    //Se crea nuestro fragmento
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,24 +61,18 @@ public class DetalleFragment extends Fragment {
         }
     }
 
-    //Creacion de la interfaz del fragemnto
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //Con esto se crea la interfaz del fragmento
+
        View vista = inflater.inflate(R.layout.fragment_detalle, container, false);
 
-       //se crea un Bundle con los argumentos de este fragmento.
         Bundle args = getArguments();
 
-        //Si este es diferente de null, la posicion se le asiganara el int que tiene ese argumento,
-        //y asi se le asigna a la informacion del libro junto con la vista creada.
         if (args != null) {
             int position = args.getInt(ARG_ID_LIBRO);
             ponInfoLibro(position, vista);
         } else {
-            //si esto no es asi, se manda la posicion 0 para que no ocurra algun error.
             ponInfoLibro(0, vista);
         }
 
@@ -89,12 +81,10 @@ public class DetalleFragment extends Fragment {
         return vista;
     }
 
-    //se le asigna la informacion con el id obtenido
     public void ponInfoLibro(int id) {
         ponInfoLibro(id, getView());
     }
 
-    //se crea la informacion del libro con los datos mandados anterior mente
     private void ponInfoLibro(int id, View vista) {
         Libro libro =
                 Libro.ejemploLibros().elementAt(id);

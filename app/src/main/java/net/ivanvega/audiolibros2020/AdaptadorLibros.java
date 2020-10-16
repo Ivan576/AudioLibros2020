@@ -18,7 +18,6 @@ public class AdaptadorLibros extends  RecyclerView.Adapter<AdaptadorLibros.ViewH
     private  Context contexto;
     private  LayoutInflater inflador;
 
-    //Le damos la propiedad del click
 
     public void setOnLongClickListener(View.OnLongClickListener onLongClickListener) {
         this.onLongClickListener = onLongClickListener;
@@ -32,8 +31,6 @@ public class AdaptadorLibros extends  RecyclerView.Adapter<AdaptadorLibros.ViewH
     private View.OnClickListener onclickListener;
 
 
-    //Creamos el constructor para nuestra clase de adaptador de libros
-
     public AdaptadorLibros(Context contexto,
                            Vector<Libro> vectorLibros) {
         inflador = (LayoutInflater) contexto.getSystemService
@@ -43,7 +40,6 @@ public class AdaptadorLibros extends  RecyclerView.Adapter<AdaptadorLibros.ViewH
         this.contexto = contexto;
     }
 
-    //creamos una instancia
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,8 +53,6 @@ public class AdaptadorLibros extends  RecyclerView.Adapter<AdaptadorLibros.ViewH
 
     }
 
-    //representa el elemento del libro que se va a crear
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Libro libro = vectorLibros.get(position);
@@ -67,14 +61,11 @@ public class AdaptadorLibros extends  RecyclerView.Adapter<AdaptadorLibros.ViewH
         holder.titulo.setText(libro.titulo);
     }
 
-
-    //tamanio del vector
     @Override
     public int getItemCount() {
         return vectorLibros.size();
     }
 
-    //Creamos nuestro ViewHolder, con los tipos de elementos a modificar
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView portada;
         public TextView titulo;
